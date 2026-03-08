@@ -19,7 +19,7 @@ const CaptainLogin = () => {
             <div>
                 <img className="w-20 mb-8" src={driver} alt="" />
                 <form onSubmit={handleFormSubmit}>
-                    <h3 className="text-lg font-medium mb-2">
+                    <h3 className="text-base font-medium mb-2">
                         What's your email
                     </h3>
                     <input
@@ -33,7 +33,7 @@ const CaptainLogin = () => {
                             setEmail(e.target.value);
                         }}
                     />
-                    <h3 className="text-lg font-medium mb-2">Enter Password</h3>
+                    <h3 className="text-base font-medium mb-2">Enter Password</h3>
                     <input
                         type="password"
                         name="password"
@@ -46,7 +46,7 @@ const CaptainLogin = () => {
                             setPassword(e.target.value);
                         }}
                     />
-                    <button className="bg-[#111] text-white font-semibold rounded px-4 mb-3 py-2 w-full text-lg">
+                    <button className="bg-[#111] text-white font-semibold rounded px-4 mb-3 py-2 w-full text-base">
                         Login
                     </button>
                     <p className="text-center text-sm font-semibold">
@@ -60,7 +60,7 @@ const CaptainLogin = () => {
             <div>
                 <Link
                     to="/login"
-                    className="bg-sky-600 block text-center text-white font-semibold rounded px-4 py-2 w-full text-lg"
+                    className="bg-sky-600 block text-center text-white font-semibold rounded px-4 py-2 w-full text-base"
                 >
                     Sign in as User
                 </Link>

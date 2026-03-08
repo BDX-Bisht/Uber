@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 const Home = () => {
     return (
-        <div className="h-screen flex justify-between flex-col w-full bg-red-400 bg-[url(https://images.pexels.com/photos/14340513/pexels-photo-14340513.jpeg)] bg-cover bg-center">
+        <div className="h-screen flex justify-between flex-col w-full bg-[url(https://images.pexels.com/photos/14340513/pexels-photo-14340513.jpeg)] bg-cover bg-center">
             <div className="p-8">
                 <img className="w-40" src={UberLogo} alt="" />
             </div>
