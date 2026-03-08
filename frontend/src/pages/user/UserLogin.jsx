@@ -1,17 +1,34 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import UberLogo from "/uber.png";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import axios from "axios";
+import { UserDataContext } from "../../context/UserContext";
 
 const UserLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [userData, setUserData] = useState({});
 
-    const handleFormSubmit = (e) => {
+    const navigate = useNavigate();
+    const { setUser } = useContext(UserDataContext);
+
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
+        const userData = { email, password };
+
+        const response = await axios.post(
+            `${import.meta.env.VITE_BASE_URL}/users/login`,
+            userData,
+        );
+
+        if (response.status == 200) {
+            const data = response.data;
+            setUser(data.user);
+            localStorage.setItem("user-token", data.token);
+            navigate("/home");
+        }
+
         setEmail("");
         setPassword("");
-        setUserData({ email, password });
     };
 
     return (
@@ -33,7 +50,9 @@ const UserLogin = () => {
                             setEmail(e.target.value);
                         }}
                     />
-                    <h3 className="text-base font-medium mb-2">Enter Password</h3>
+                    <h3 className="text-base font-medium mb-2">
+                        Enter Password
+                    </h3>
                     <input
                         type="password"
                         name="password"

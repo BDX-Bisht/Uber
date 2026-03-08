@@ -1,24 +1,41 @@
-import React, { useState } from "react";
-import driver from "/driver.jpg";
-import { Link } from "react-router";
+import React, { useContext, useState } from "react";
+import UberLogo from "/uber.png";
+import { Link, useNavigate } from "react-router";
+import axios from "axios";
+import { UserDataContext } from "../../context/UserContext";
 
-const CaptainSignup = () => {
+const UserSignUp = () => {
     const [firstname, setFirstname] = useState("");
     const [lastname, setLastname] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [userData, setUserData] = useState({});
 
-    const handleFormSubmit = (e) => {
+    const navigate = useNavigate();
+    const { user, setUser } = useContext(UserDataContext);
+
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
-        setUserData({
+        const userData = {
             fullname: {
                 firstname,
                 lastname,
             },
             email,
             password,
-        });
+        };
+
+        const response = await axios.post(
+            `${import.meta.env.VITE_BASE_URL}/users/register`,
+            userData,
+        );
+
+        if (response.status === 201) {
+            const data = response.data;
+            setUser(data.user);
+            localStorage.setItem("user-token", data.token);
+            navigate("/home");
+        }
+
         setFirstname("");
         setLastname("");
         setEmail("");
@@ -29,15 +46,15 @@ const CaptainSignup = () => {
         <div>
             <div className="p-7 h-screen flex flex-col justify-between gap-4">
                 <div>
-                    <img className="w-20 mb-8" src={driver} alt="" />
+                    <img className="w-40 mb-8" src={UberLogo} alt="" />
                     <form onSubmit={handleFormSubmit}>
                         <h3 className="text-base font-medium mb-2">
-                            What's captain name
+                            What's your name
                         </h3>
                         <div className="flex gap-2 mb-5">
                             <input
-                                type="email"
-                                name="email"
+                                type="text"
+                                name="firstname"
                                 required
                                 placeholder="firstname"
                                 className="bg-[#eee] rounded px-4 w-1/2 py-2 text-sm placeholder:text-sm"
@@ -47,8 +64,8 @@ const CaptainSignup = () => {
                                 }}
                             />
                             <input
-                                type="email"
-                                name="email"
+                                type="text"
+                                name="lastname"
                                 required
                                 placeholder="lastname"
                                 className="bg-[#eee] rounded px-4 w-1/2 py-2 text-sm placeholder:text-sm"
@@ -88,11 +105,11 @@ const CaptainSignup = () => {
                             }}
                         />
                         <button className="bg-[#111] text-white font-semibold rounded px-4 mb-3 py-2 w-full text-base">
-                            Signup
+                            Create account
                         </button>
                         <p className="text-center text-sm font-semibold">
-                            Already a captain?{" "}
-                            <Link to="/captain-login" className="text-blue-500">
+                            Already have a account?{" "}
+                            <Link to="/login" className="text-blue-500">
                                 Login here
                             </Link>
                         </p>
@@ -110,4 +127,4 @@ const CaptainSignup = () => {
     );
 };
 
-export default CaptainSignup;
+export default UserSignUp;

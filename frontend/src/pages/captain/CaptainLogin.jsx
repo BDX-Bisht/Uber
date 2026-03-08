@@ -1,17 +1,35 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import driver from "/driver.jpg";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { CaptainUserContext } from "../../context/CaptainContext";
+import axios from "axios";
 
 const CaptainLogin = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [userData, setUserData] = useState({});
 
-    const handleFormSubmit = (e) => {
+    const { setCaptain } = useContext(CaptainUserContext);
+    const navigate = useNavigate();
+
+    const handleFormSubmit = async (e) => {
         e.preventDefault();
+
+        const captainData = { email, password };
+
+        const response = await axios.post(
+            `${import.meta.env.VITE_BASE_URL}/captain/login`,
+            captainData,
+        );
+
+        if (response.status == 200) {
+            const data = response.data;
+            setCaptain(data.captain);
+            localStorage.setItem("captain-token", data.token);
+            navigate("/captain");
+        }
+
         setEmail("");
         setPassword("");
-        setUserData({ email, password });
     };
 
     return (
@@ -33,7 +51,9 @@ const CaptainLogin = () => {
                             setEmail(e.target.value);
                         }}
                     />
-                    <h3 className="text-base font-medium mb-2">Enter Password</h3>
+                    <h3 className="text-base font-medium mb-2">
+                        Enter Password
+                    </h3>
                     <input
                         type="password"
                         name="password"
