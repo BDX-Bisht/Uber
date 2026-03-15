@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserDataContext } from "../../context/UserContext";
 import { Outlet, useNavigate } from "react-router";
 import axios from "axios";
+import Loading from "../../components/Loading";
 
 const UserProtectedWrapper = () => {
     const { user, setUser } = useContext(UserDataContext);
@@ -35,7 +36,11 @@ const UserProtectedWrapper = () => {
     }, []);
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return (
+            <>
+                <Loading />
+            </>
+        );
     }
 
     return <>{<Outlet />}</>;
