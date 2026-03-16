@@ -1,5 +1,4 @@
 import UberLogo from "/uber.png";
-
 import map from "/map.png";
 import React, { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";

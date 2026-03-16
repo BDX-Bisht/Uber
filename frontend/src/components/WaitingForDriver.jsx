@@ -37,26 +37,26 @@ const WaitingForDriver = () => {
                             Maruti Suzuki EECO
                         </div>
                         <div className="text-base">
-                            <i class="text-gray-600 ri-star-fill"></i> 4.9
+                            <i className="text-gray-600 ri-star-fill"></i> 4.9
                         </div>
                     </div>
                 </div>
                 <div className="flex items-center justify-between mt-6 px-8">
                     <div className="flex flex-col gap-1 items-center">
                         <div className="h-12 w-12 rounded-full bg-[#f0edee] flex items-center justify-center">
-                            <i class="ri-shield-check-fill text-lg text-blue-500"></i>
+                            <i className="ri-shield-check-fill text-lg text-blue-500"></i>
                         </div>
                         <div className="font-semibold">Safety</div>
                     </div>
                     <div className="flex flex-col gap-1 items-center">
                         <div className="h-12 w-12 rounded-full bg-[#f0edee] flex items-center justify-center">
-                            <i class="ri-gps-fill text-lg text-blue-500"></i>
+                            <i className="ri-gps-fill text-lg text-blue-500"></i>
                         </div>
                         <div className="font-semibold">Share my trip</div>
                     </div>
                     <div className="flex flex-col gap-1 items-center">
                         <div className="h-12 w-12 rounded-full bg-[#f0edee] flex items-center justify-center">
-                            <i class="ri-phone-fill text-lg text-blue-500"></i>
+                            <i className="ri-phone-fill text-lg text-blue-500"></i>
                         </div>
                         <div className="font-semibold">Call Driver</div>
                     </div>

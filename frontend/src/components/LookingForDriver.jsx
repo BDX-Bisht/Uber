@@ -6,7 +6,7 @@ const LookingForDriver = () => {
         <div>
             <h3 className="text-xl font-semibold mb-2">Looking for a driver</h3>
             <div className="animate-pulse">
-                <div class="size-1 w-full rounded-full bg-blue-200"></div>
+                <div className="size-1 w-full rounded-full bg-blue-200"></div>
             </div>
             <div className="flex flex-col gap-4 items-center justify-center">
                 <img src={car} className="w-40 py-2" alt="" />
