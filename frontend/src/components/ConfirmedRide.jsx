@@ -55,7 +55,7 @@ const ConfirmedRide = ({
                 <button
                     onClick={() => {
                         setVehicleFound(true);
-                        setConfirmRidePanel(false)
+                        setConfirmRidePanel(false);
                     }}
                     className="w-full bg-green-600 font-semibold text-base py-2 text-white rounded-md"
                 >
