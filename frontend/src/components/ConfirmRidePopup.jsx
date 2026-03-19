@@ -1,18 +1,18 @@
-import React from "react";
 import driver from "/driver.png";
+import React from "react";
 
-const RidePopup = ({ setRidePopupPanel, setConfirmRidePopupPanel }) => {
+const ConfirmRidePopup = ({ setConfirmRidePopupPanel }) => {
     return (
         <>
             <div
                 className="text-center text-3xl text-gray-300 leading-3 mb-4"
                 onClick={() => {
-                    setRidePopupPanel(false);
+                    setConfirmRidePopupPanel(false);
                 }}
             >
                 <i className="ri-arrow-down-wide-line"></i>
             </div>
-            <h3 className="text-2xl font-semibold mb-2">New Ride Available!</h3>
+            <h3 className="text-2xl font-semibold mb-2">Confirm this ride to start</h3>
             <div className="flex items-center justify-between mt-6 bg-orange-50 px-4 py-3 rounded-lg">
                 <div className="flex items-center gap-3">
                     <img className="w-12" src={driver} alt="" />
@@ -40,24 +40,18 @@ const RidePopup = ({ setRidePopupPanel, setConfirmRidePopupPanel }) => {
             <div className="mt-6 w-full grid grid-cols-2 gap-2">
                 <button
                     onClick={() => {
-                        setRidePopupPanel(false);
+                        setConfirmRidePopupPanel(false);
                     }}
-                    className="bg-gray-300 font-semibold text-base py-2 rounded-md"
+                    className="bg-red-600 text-white font-semibold text-base py-2 rounded-md"
                 >
-                    Ignore
+                    Cancel
                 </button>
-                <button
-                    onClick={() => {
-                        setRidePopupPanel(false);
-                        setConfirmRidePopupPanel(true);
-                    }}
-                    className="bg-green-600 font-semibold text-base py-2 text-white rounded-md"
-                >
-                    Accept
+                <button className="bg-green-600 font-semibold text-base py-2 text-white rounded-md">
+                    Confirm
                 </button>
             </div>
         </>
     );
 };
 
-export default RidePopup;
+export default ConfirmRidePopup;
