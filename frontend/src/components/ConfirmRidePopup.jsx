@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import driver from "/driver.png";
 import React from "react";
 
@@ -46,9 +47,9 @@ const ConfirmRidePopup = ({ setConfirmRidePopupPanel }) => {
                 >
                     Cancel
                 </button>
-                <button className="bg-green-600 font-semibold text-base py-2 text-white rounded-md">
+                <Link to="/captain-riding" className="bg-green-600 block text-center font-semibold text-base py-2 text-white rounded-md">
                     Confirm
-                </button>
+                </Link>
             </div>
         </>
     );
